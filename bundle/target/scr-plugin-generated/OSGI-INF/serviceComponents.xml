@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
+    <scr:component enabled="true" name="com.greyarea.aemtoolkit.impl.HelloServiceImpl">
+        <implementation class="com.greyarea.aemtoolkit.impl.HelloServiceImpl"/>
+        <service servicefactory="false">
+            <provide interface="com.greyarea.aemtoolkit.HelloService"/>
+        </service>
+        <property name="service.pid" value="com.greyarea.aemtoolkit.impl.HelloServiceImpl"/>
+        <reference name="repository" interface="org.apache.sling.jcr.api.SlingRepository" cardinality="1..1" policy="static" bind="bindRepository" unbind="unbindRepository"/>
+    </scr:component>
+    <scr:component enabled="true" immediate="true" name="com.greyarea.aemtoolkit.impl.filters.LoggingFilter">
+        <implementation class="com.greyarea.aemtoolkit.impl.filters.LoggingFilter"/>
+        <service servicefactory="false">
+            <provide interface="javax.servlet.Filter"/>
+        </service>
+        <property name="service.ranking" type="Integer" value="-700"/>
+        <property name="sling.filter.scope" value="REQUEST"/>
+        <property name="service.pid" value="com.greyarea.aemtoolkit.impl.filters.LoggingFilter"/>
+    </scr:component>
+    <scr:component enabled="true" immediate="true" name="com.greyarea.aemtoolkit.servlets.RecaptchaServlet" activate="activate">
+        <implementation class="com.greyarea.aemtoolkit.servlets.RecaptchaServlet"/>
+        <service servicefactory="false">
+            <provide interface="javax.servlet.Servlet"/>
+        </service>
+        <property name="sling.servlet.paths" type="String" value="/bin/servlet/verifyRecaptcha"/>
+        <property name="prop.secretkey" type="String" value="123456"/>
+        <property name="service.pid" value="com.greyarea.aemtoolkit.servlets.RecaptchaServlet"/>
+    </scr:component>
+</components>

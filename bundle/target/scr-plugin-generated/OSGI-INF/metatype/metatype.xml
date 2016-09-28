@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.0.0" localization="OSGI-INF/metatype/metatype">
+    <OCD id="com.greyarea.aemtoolkit.servlets.RecaptchaServlet" name="Google reCAPTCHA verification" description="%com.greyarea.aemtoolkit.servlets.RecaptchaServlet.description">
+        <AD id="sling.servlet.paths" type="String" default="/bin/servlet/verifyRecaptcha" name="%sling.servlet.paths.name" description="%sling.servlet.paths.description"/>
+        <AD id="prop.secretkey" type="String" default="123456" name="Provide Secret Key" description="Provide secret key"/>
+    </OCD>
+    <Designate pid="com.greyarea.aemtoolkit.servlets.RecaptchaServlet">
+        <Object ocdref="com.greyarea.aemtoolkit.servlets.RecaptchaServlet"/>
+    </Designate>
+</metatype:MetaData>
